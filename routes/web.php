@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//add by shandy starts here: 
+#location->(App\Http\Controllers :: QuestionsController.php)
+Route::resource('questions', 'QuestionsController');
+//end here
