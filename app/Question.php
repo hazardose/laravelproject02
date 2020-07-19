@@ -9,19 +9,14 @@ class Question extends Model
     protected $fillable = ['title', 'body'];
 
     public function user() {
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
-    
-    public function questions() 
+    //add ----
+   
+    public function setTitleAttribute($value)
     {
-        return $this->hasMany(Question::class);
-
-    }
-
-    public function setTitleAttribute($value);
-    {
-        $this->attribute['title'] = $value;
-        $this->attribute['slug'] = $value;
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($value);
     
     }
 
