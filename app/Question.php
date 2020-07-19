@@ -22,7 +22,7 @@ class Question extends Model
     {
         $this->attribute['title'] = $value;
         $this->attribute['slug'] = $value;
-        
+    
     }
 
 }
