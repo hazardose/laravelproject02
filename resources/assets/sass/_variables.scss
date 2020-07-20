@@ -7,6 +7,11 @@ $font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
+//add by shandy for bg votes [connect to app.scss in saas folder
+$color-green: rgb(95, 187, 126);
+$color-white: #fff;
+// ---> end here add
+
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -18,3 +23,5 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
