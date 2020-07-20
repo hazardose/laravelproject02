@@ -19,5 +19,15 @@ class Question extends Model
         $this->attributes['slug'] = str_slug($value);
     
     }
+    // add shandy for link in index
+    public function getUrlAttribute()
+    {
+        return route("questions.show", $this->id); //route to User.php
+    }
 
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+    //end here for index link
 }

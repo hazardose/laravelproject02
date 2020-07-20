@@ -16,9 +16,15 @@ class QuestionsController extends Controller
     {
         //Add shandy here for index pagenate
         #this is resource from folder views
-        $questions = Question::latest()->paginate(5);
 
+       # \DB::enableQueryLog(); debuger
+        #$questions = Question::latest()->paginate(5);
+
+        $questions = Question::with('user')->latest()->paginate(5);
         return view('questions.index', compact('questions'));
+        
+        # view('questions.index', compact('questions'))->render(); test for debuger
+        #dd(\DB::getQueryLog()); debuger
         //end here
     }
 
