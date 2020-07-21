@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// comment this area for route:cache
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+/// --- end here comment
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
