@@ -75,9 +75,14 @@ class QuestionsController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
+    #public function edit($id) -> you use this with line #82
     public function edit(Question $question)
     {
-        //
+        //index.blade.php line 45
+        #$question = Question::findOrFail($id)
+        return view("questions.edit", compact('question'));
+
+
     }
 
     /**
@@ -87,9 +92,13 @@ class QuestionsController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(AskQuestionRequest $request, Question $question)
     {
-        //
+        //edit.blade.php
+
+        $question->update($request->only('title', 'body'));
+
+        return redirect('/questions')->with('success', "Your question has been updated");
     }
 
     /**
