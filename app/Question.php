@@ -22,7 +22,9 @@ class Question extends Model
     // add shandy for link in index [connect to index.blade.php]
     public function getUrlAttribute()
     {
-        return route("questions.show", $this->id); //route to User.php
+        //modify routes $id to $slug url.
+        #return route("questions.show", $id);
+        return route("questions.show", $this->slug); //route to User.php
     }
 
     public function getCreatedDateAttribute()
@@ -41,4 +43,10 @@ class Question extends Model
             return "answered";
         }return "unanswered";
     } //end status here!
+
+    public function getBodyHtmlAttribute()
+    {
+        //to convert into html tags
+        return \Parsedown::instance()->text($this->body);
+    }
 }

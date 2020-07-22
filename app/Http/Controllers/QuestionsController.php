@@ -66,7 +66,10 @@ class QuestionsController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        //display the slug into a page
+        #dd($question->body);
+        $question->increment('views');
+        return view('questions.show', compact('question'));
     }
 
     /**

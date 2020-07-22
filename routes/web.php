@@ -22,5 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //add by shandy starts here: 
 #location->(App\Http\Controllers :: QuestionsController.php)
-Route::resource('questions', 'QuestionsController');
+#Route::resource('questions', 'QuestionsController');
 //end here
+Route::resource('questions', 'QuestionsController')->except('show');
+//convert id into slug URL to show
+Route::get('/questions/{slug}', 'QuestionsController@show')->name('questions.show');
