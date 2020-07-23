@@ -25,6 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //see on QuestionController.php to auth users affected script are QuestionController and index.blade.php
+        \Gate:: define('update-question', function($user, $question){
+            return $user->id == $question->user_id;
+
+        });
+        \Gate:: define('delete-question', function($user, $question){
+            return $user->id == $question->user_id;
+            
+        });
+        //end here !
     }
 }

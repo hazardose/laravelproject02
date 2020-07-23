@@ -81,10 +81,13 @@ class QuestionsController extends Controller
     #public function edit($id) -> you use this with line #82
     public function edit(Question $question)
     {
+        //add auth base on who logon only
+        if (\Gate::denies('update-question', $question)){
+            abort(403, "Access denied");
+        } 
         //index.blade.php line 45
         #$question = Question::findOrFail($id)
         return view("questions.edit", compact('question'));
-
 
     }
 
@@ -97,8 +100,11 @@ class QuestionsController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
+        //add for auth
+        if (\Gate::denies('update-question', $question)){
+            abort(403, "Access denied");
+        } 
         //edit.blade.php
-
         $question->update($request->only('title', 'body'));
 
         return redirect('/questions')->with('success', "Your question has been updated");
@@ -112,8 +118,11 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
+        //add for auth 
+        if (\Gate::denies('delete-question', $question)){
+            abort(403, "Access denied");
+        } 
         //action see on index.blade.php
-
         $question->delete();
         return redirect('/questions')->with('success', "You question has been deleted");
     }
